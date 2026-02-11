@@ -10,5 +10,5 @@ not_found_handling = "single-page-application"
 [[d1_databases]]
 binding = "DB"
 database_name = "pong-scores"
-database_id = "PLACEHOLDER"
+database_id = ""
 migrations_dir = "migrations"
