@@ -15,15 +15,17 @@ A classic Pong game built as a static web application, designed for deployment o
   - `src/components/ArcadeButton.tsx` - Retro styled button component
   - `src/pages/Home.tsx` - Start screen with high scores
   - `src/hooks/use-scores.ts` - localStorage-based score management
-- `workers-site/index.js` - Cloudflare Worker entry point (serves static files)
 - `wrangler.toml` - Cloudflare Workers configuration
 - `dist/public/` - Built static files (output of `npx vite build`)
 
 ## Deployment to Cloudflare Workers Sites
-1. Build the frontend: `npx vite build --config vite.config.ts`
-2. Deploy using Wrangler: `npx wrangler deploy`
+In Cloudflare dashboard, set the **Build command** to:
+```
+npx vite build --config vite.config.ts && npx wrangler deploy
+```
+This builds the static files first, then deploys them.
 
-The `wrangler.toml` uses the modern `[assets]` configuration with `serving_mode = "single-page-application"` which handles SPA routing automatically. Wrangler manages the asset manifest and KV binding internally — no manual setup required.
+The `wrangler.toml` uses the modern `[assets]` configuration. Wrangler handles asset serving automatically — no Worker script required.
 
 ## Local Development
 - Run `npm run dev` to start the development server on port 5000
@@ -31,4 +33,5 @@ The `wrangler.toml` uses the modern `[assets]` configuration with `serving_mode 
 ## Recent Changes
 - Converted from Express+PostgreSQL backend to fully static site
 - High scores stored in browser localStorage instead of database
-- Added wrangler.toml and Workers Site entry point for Cloudflare deployment
+- Added wrangler.toml for Cloudflare Workers deployment
+- Removed workers-site entry point (not needed with modern [assets] config)

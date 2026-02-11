@@ -1,7 +1,5 @@
 name = "pong-game"
-main = "workers-site/index.js"
 compatibility_date = "2024-01-01"
 
 [assets]
 directory = "./dist/public"
-serving_mode = "single-page-application"
