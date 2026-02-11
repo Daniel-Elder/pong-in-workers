@@ -1,0 +1,72 @@
+2026-02-11T20:41:26.287Z	Initializing build environment...
+2026-02-11T20:41:28.246Z	Success: Finished initializing build environment
+2026-02-11T20:41:29.090Z	Cloning repository...
+2026-02-11T20:41:30.542Z	Detected the following tools from environment: npm@10.9.2, nodejs@22.16.0
+2026-02-11T20:41:30.544Z	Restoring from dependencies cache
+2026-02-11T20:41:30.545Z	Restoring from build output cache
+2026-02-11T20:41:26.287Z	Initializing build environment...
+2026-02-11T20:41:28.246Z	Success: Finished initializing build environment
+2026-02-11T20:41:29.090Z	Cloning repository...
+2026-02-11T20:41:30.542Z	Detected the following tools from environment: npm@10.9.2, nodejs@22.16.0
+2026-02-11T20:41:30.544Z	Restoring from dependencies cache
+2026-02-11T20:41:30.545Z	Restoring from build output cache
+2026-02-11T20:41:33.063Z	Success: Dependencies restored from build cache.
+2026-02-11T20:41:33.064Z	Installing project dependencies: npm clean-install --progress=false
+2026-02-11T20:41:43.113Z	
+2026-02-11T20:41:43.114Z	added 511 packages, and audited 512 packages in 10s
+2026-02-11T20:41:43.114Z	
+2026-02-11T20:41:43.114Z	85 packages are looking for funding
+2026-02-11T20:41:43.114Z	  run `npm fund` for details
+2026-02-11T20:41:43.116Z	
+2026-02-11T20:41:43.116Z	1 moderate severity vulnerability
+2026-02-11T20:41:43.116Z	
+2026-02-11T20:41:43.116Z	To address all issues, run:
+2026-02-11T20:41:43.116Z	  npm audit fix
+2026-02-11T20:41:43.116Z	
+2026-02-11T20:41:43.116Z	Run `npm audit` for details.
+2026-02-11T20:41:43.337Z	Executing user build command: npx vite build --config vite.config.ts && npx wrangler deploy
+2026-02-11T20:41:44.100Z	vite v7.3.0 building client environment for production...
+2026-02-11T20:41:44.434Z	transforming...
+2026-02-11T20:41:47.238Z	✓ 1650 modules transformed.
+2026-02-11T20:41:47.432Z	rendering chunks...
+2026-02-11T20:41:47.439Z	computing gzip size...
+2026-02-11T20:41:47.455Z	../dist/public/index.html                   2.05 kB │ gzip:  0.79 kB
+2026-02-11T20:41:47.456Z	../dist/public/assets/index-B8kZlS0A.css   67.49 kB │ gzip: 11.29 kB
+2026-02-11T20:41:47.456Z	../dist/public/assets/index-CBN1UjCs.js   242.85 kB │ gzip: 78.45 kB
+2026-02-11T20:41:47.456Z	✓ built in 3.33s
+2026-02-11T20:41:56.645Z	
+2026-02-11T20:41:56.645Z	 ⛅️ wrangler 4.64.0
+2026-02-11T20:41:56.645Z	───────────────────
+2026-02-11T20:41:56.781Z	▲ [WARNING] Failed to match Worker name. Your config file is using the Worker name "pong-game", but the CI system expected "pong-in-workers". Overriding using the CI provided Worker name. Workers Builds connected builds will attempt to open a pull request to resolve this config name mismatch.
+2026-02-11T20:41:56.781Z	
+2026-02-11T20:41:56.781Z	
+2026-02-11T20:41:57.991Z	🌀 Building list of assets...
+2026-02-11T20:41:57.992Z	✨ Read 5 files from the assets directory /opt/buildhome/repo/dist/public
+2026-02-11T20:41:58.000Z	🌀 Starting asset upload...
+2026-02-11T20:42:00.746Z	🌀 Found 2 new or modified static assets to upload. Proceeding with upload...
+2026-02-11T20:42:00.746Z	+ /index.html
+2026-02-11T20:42:00.746Z	+ /assets/index-CBN1UjCs.js
+2026-02-11T20:42:01.672Z	Uploaded 1 of 2 assets
+2026-02-11T20:42:02.584Z	Uploaded 2 of 2 assets
+2026-02-11T20:42:02.584Z	✨ Success! Uploaded 2 files (2 already uploaded) (1.84 sec)
+2026-02-11T20:42:02.584Z	
+2026-02-11T20:42:02.585Z	Total Upload: 1.99 KiB / gzip: 0.77 KiB
+2026-02-11T20:42:03.419Z	Your Worker has access to the following bindings:
+2026-02-11T20:42:03.419Z	Binding                       Resource         
+2026-02-11T20:42:03.419Z	env.DB (pong-scores)          D1 Database      
+2026-02-11T20:42:03.419Z	env.ASSETS                    Assets           
+2026-02-11T20:42:03.419Z	
+2026-02-11T20:42:03.426Z	
+2026-02-11T20:42:03.426Z	Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+2026-02-11T20:42:03.428Z	
+2026-02-11T20:42:03.430Z	✘ [ERROR] A request to the Cloudflare API (/accounts/f70adfb5fc5143fe19115295b23591a4/workers/scripts/pong-in-workers/versions) failed.
+2026-02-11T20:42:03.430Z	
+2026-02-11T20:42:03.430Z	  binding DB of type d1 must have a valid `id` specified [code: 10021]
+2026-02-11T20:42:03.430Z	  To learn more about this error, visit: https://developers.cloudflare.com/workers/observability/errors/#validation-errors-10021
+2026-02-11T20:42:03.430Z	
+2026-02-11T20:42:03.430Z	  
+2026-02-11T20:42:03.430Z	  If you think this is a bug, please open an issue at: https://github.com/cloudflare/workers-sdk/issues/new/choose
+2026-02-11T20:42:03.430Z	
+2026-02-11T20:42:03.431Z	
+2026-02-11T20:42:03.449Z	🪵  Logs were written to "/opt/buildhome/.config/.wrangler/logs/wrangler-2026-02-11_20-41-55_980.log"
+2026-02-11T20:42:03.499Z	Failed: error occurred while running build command
