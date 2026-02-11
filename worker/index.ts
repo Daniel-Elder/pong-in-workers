@@ -10,7 +10,10 @@ interface ScoreRow {
   created_at: string;
 }
 
+let tableReady = false;
+
 async function ensureTable(db: D1Database) {
+  if (tableReady) return;
   await db.prepare(
     `CREATE TABLE IF NOT EXISTS scores (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,6 +22,7 @@ async function ensureTable(db: D1Database) {
       created_at TEXT DEFAULT (datetime('now'))
     )`
   ).run();
+  tableReady = true;
 }
 
 export default {
