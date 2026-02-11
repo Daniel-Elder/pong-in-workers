@@ -1,13 +1,35 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type ScoreInput } from "@shared/routes";
+
+export interface LocalScore {
+  id: number;
+  initials: string;
+  score: number;
+  createdAt: string;
+}
+
+const STORAGE_KEY = "pong_high_scores";
+
+function getStoredScores(): LocalScore[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    return JSON.parse(raw) as LocalScore[];
+  } catch {
+    return [];
+  }
+}
+
+function saveScores(scores: LocalScore[]) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(scores));
+}
 
 export function useScores() {
   return useQuery({
-    queryKey: [api.scores.list.path],
+    queryKey: ["local-scores"],
     queryFn: async () => {
-      const res = await fetch(api.scores.list.path, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch scores");
-      return api.scores.list.responses[200].parse(await res.json());
+      const scores = getStoredScores();
+      return scores.sort((a, b) => b.score - a.score).slice(0, 10);
     },
   });
 }
@@ -15,26 +37,20 @@ export function useScores() {
 export function useCreateScore() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (data: ScoreInput) => {
-      const validated = api.scores.create.input.parse(data);
-      const res = await fetch(api.scores.create.path, {
-        method: api.scores.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-        credentials: "include",
-      });
-      
-      if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.scores.create.responses[400].parse(await res.json());
-          throw new Error(error.message);
-        }
-        throw new Error("Failed to submit score");
-      }
-      return api.scores.create.responses[201].parse(await res.json());
+    mutationFn: async (data: { initials: string; score: number }) => {
+      const scores = getStoredScores();
+      const newScore: LocalScore = {
+        id: Date.now(),
+        initials: data.initials.toUpperCase().slice(0, 3),
+        score: data.score,
+        createdAt: new Date().toISOString(),
+      };
+      scores.push(newScore);
+      saveScores(scores);
+      return newScore;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [api.scores.list.path] });
+      queryClient.invalidateQueries({ queryKey: ["local-scores"] });
     },
   });
 }
