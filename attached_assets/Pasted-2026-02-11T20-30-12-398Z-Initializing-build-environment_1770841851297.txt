@@ -1,0 +1,34 @@
+2026-02-11T20:30:12.398Z	Initializing build environment...
+2026-02-11T20:30:12.398Z	Initializing build environment...
+2026-02-11T20:30:14.421Z	Success: Finished initializing build environment
+2026-02-11T20:30:15.107Z	Cloning repository...
+2026-02-11T20:30:16.820Z	Detected the following tools from environment: npm@10.9.2, nodejs@22.16.0
+2026-02-11T20:30:16.822Z	Restoring from dependencies cache
+2026-02-11T20:30:16.825Z	Restoring from build output cache
+2026-02-11T20:30:16.982Z	Installing project dependencies: npm clean-install --progress=false
+2026-02-11T20:30:32.453Z	
+2026-02-11T20:30:32.454Z	added 511 packages, and audited 512 packages in 15s
+2026-02-11T20:30:32.454Z	
+2026-02-11T20:30:32.454Z	85 packages are looking for funding
+2026-02-11T20:30:32.454Z	  run `npm fund` for details
+2026-02-11T20:30:32.455Z	
+2026-02-11T20:30:32.455Z	1 moderate severity vulnerability
+2026-02-11T20:30:32.455Z	
+2026-02-11T20:30:32.455Z	To address all issues, run:
+2026-02-11T20:30:32.455Z	  npm audit fix
+2026-02-11T20:30:32.456Z	
+2026-02-11T20:30:32.456Z	Run `npm audit` for details.
+2026-02-11T20:30:34.130Z	Executing user deploy command: npx wrangler deploy
+2026-02-11T20:30:38.051Z	
+2026-02-11T20:30:38.052Z	 ⛅️ wrangler 4.64.0
+2026-02-11T20:30:38.052Z	───────────────────
+2026-02-11T20:30:38.110Z	
+2026-02-11T20:30:38.110Z	Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+2026-02-11T20:30:38.111Z	
+2026-02-11T20:30:38.172Z	✘ [ERROR] The directory specified by the "assets.directory" field in your configuration file does not exist:
+2026-02-11T20:30:38.172Z	
+2026-02-11T20:30:38.172Z	  /opt/buildhome/repo/dist/public
+2026-02-11T20:30:38.172Z	
+2026-02-11T20:30:38.172Z	
+2026-02-11T20:30:38.213Z	🪵  Logs were written to "/opt/buildhome/.config/.wrangler/logs/wrangler-2026-02-11_20-30-37_542.log"
+2026-02-11T20:30:38.772Z	Failed: error occurred while running deploy command
