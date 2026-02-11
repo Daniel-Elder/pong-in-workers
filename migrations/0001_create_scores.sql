@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS scores (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  initials TEXT NOT NULL,
+  score INTEGER NOT NULL,
+  created_at TEXT DEFAULT (datetime('now'))
+);
