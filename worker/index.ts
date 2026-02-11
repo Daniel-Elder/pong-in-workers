@@ -10,11 +10,23 @@ interface ScoreRow {
   created_at: string;
 }
 
+async function ensureTable(db: D1Database) {
+  await db.prepare(
+    `CREATE TABLE IF NOT EXISTS scores (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      initials TEXT NOT NULL,
+      score INTEGER NOT NULL,
+      created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
     if (url.pathname === "/api/scores" && request.method === "GET") {
+      await ensureTable(env.DB);
       const results = await env.DB.prepare(
         "SELECT id, initials, score, created_at FROM scores ORDER BY score DESC LIMIT 10"
       ).all<ScoreRow>();
@@ -30,6 +42,7 @@ export default {
     }
 
     if (url.pathname === "/api/scores" && request.method === "POST") {
+      await ensureTable(env.DB);
       try {
         const body = await request.json() as { initials?: string; score?: number };
 
