@@ -1,0 +1,41 @@
+2026-02-11T20:49:37.317Z	Initializing build environment...
+2026-02-11T20:49:39.818Z	Success: Finished initializing build environment
+2026-02-11T20:49:40.892Z	Cloning repository...
+2026-02-11T20:49:42.368Z	Restoring from dependencies cache
+2026-02-11T20:49:42.371Z	Restoring from build output cache
+2026-02-11T20:49:42.374Z	Detected the following tools from environment: npm@10.9.2, nodejs@22.16.0
+2026-02-11T20:49:44.782Z	Success: Dependencies restored from build cache.
+2026-02-11T20:49:44.783Z	Installing project dependencies: npm clean-install --progress=false
+2026-02-11T20:49:56.875Z	
+2026-02-11T20:49:56.876Z	added 511 packages, and audited 512 packages in 12s
+2026-02-11T20:49:56.876Z	
+2026-02-11T20:49:56.876Z	85 packages are looking for funding
+2026-02-11T20:49:56.879Z	  run `npm fund` for details
+2026-02-11T20:49:56.879Z	
+2026-02-11T20:49:56.879Z	1 moderate severity vulnerability
+2026-02-11T20:49:56.879Z	
+2026-02-11T20:49:56.879Z	To address all issues, run:
+2026-02-11T20:49:56.879Z	  npm audit fix
+2026-02-11T20:49:56.880Z	
+2026-02-11T20:49:56.880Z	Run `npm audit` for details.
+2026-02-11T20:49:57.138Z	Executing user build command: npx vite build --config vite.config.ts && npx wrangler d1 migrations apply pong-scores --remote && npx wrangler deploy --x-provision
+2026-02-11T20:50:00.525Z	vite v7.3.0 building client environment for production...
+2026-02-11T20:50:00.613Z	transforming...
+2026-02-11T20:50:04.343Z	✓ 1650 modules transformed.
+2026-02-11T20:50:04.629Z	rendering chunks...
+2026-02-11T20:50:04.638Z	computing gzip size...
+2026-02-11T20:50:04.656Z	../dist/public/index.html                   2.05 kB │ gzip:  0.79 kB
+2026-02-11T20:50:04.656Z	../dist/public/assets/index-B8kZlS0A.css   67.49 kB │ gzip: 11.29 kB
+2026-02-11T20:50:04.656Z	../dist/public/assets/index-CBN1UjCs.js   242.85 kB │ gzip: 78.45 kB
+2026-02-11T20:50:04.656Z	✓ built in 4.10s
+2026-02-11T20:50:06.714Z	
+2026-02-11T20:50:06.715Z	 ⛅️ wrangler 4.64.0
+2026-02-11T20:50:06.715Z	───────────────────
+2026-02-11T20:50:06.715Z	Resource location: remote 
+2026-02-11T20:50:06.716Z	
+2026-02-11T20:50:06.784Z	
+2026-02-11T20:50:06.849Z	✘ [ERROR] Found a database with name or binding pong-scores but it is missing a database_id, which is needed for operations on remote resources. Please create the remote D1 database by deploying your project or running 'wrangler d1 create pong-scores'.
+2026-02-11T20:50:06.849Z	
+2026-02-11T20:50:06.849Z	
+2026-02-11T20:50:06.931Z	🪵  Logs were written to "/opt/buildhome/.config/.wrangler/logs/wrangler-2026-02-11_20-50-06_095.log"
+2026-02-11T20:50:07.057Z	Failed: error occurred while running build command
